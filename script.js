@@ -1,11 +1,32 @@
-const cards = document.querySelectorAll('.card');
+const container = document.querySelector('.swipe-container');
+let cards = [];
 let current = 0;
 let likedCats = [];
 
-// Initialize first card
+// -------- Fetch 10 random cats from Cataas --------
+async function fetchCats(count = 10) {
+  for (let i = 0; i < count; i++) {
+    const url = `https://cataas.com/cat?random=${Math.floor(Math.random() * 10000)}`;
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = `Cat ${i + 1}`;
+
+    card.appendChild(img);
+    container.appendChild(card);
+  }
+
+  // Refresh the cards NodeList after adding dynamically
+  cards = document.querySelectorAll('.card');
+  showNextCard();
+}
+
+// -------- Show next card logic --------
 function showNextCard() {
   if (current >= cards.length) {
-    document.querySelector('.swipe-container').style.display = 'none';
+    container.style.display = 'none';
     document.getElementById('summary').style.display = 'block';
     document.getElementById('like-count').textContent = likedCats.length;
 
@@ -24,7 +45,7 @@ function showNextCard() {
   });
 }
 
-// Handle swipe action
+// -------- Swipe handling --------
 function handleSwipe(direction) {
   const card = cards[current];
   if (!card) return;
@@ -38,37 +59,33 @@ function handleSwipe(direction) {
   setTimeout(showNextCard, 300);
 }
 
-// -------- Mobile Touch Events --------
+// -------- Mobile touch --------
 let startX;
-const container = document.querySelector('.swipe-container');
-
 container.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-
 container.addEventListener('touchend', e => {
   const endX = e.changedTouches[0].clientX;
   if (endX - startX > 50) handleSwipe('right');
   else if (endX - startX < -50) handleSwipe('left');
 });
 
-// -------- Desktop Mouse Drag Events --------
+// -------- Desktop mouse drag --------
 let mouseDownX;
 container.addEventListener('mousedown', e => mouseDownX = e.clientX);
-
 container.addEventListener('mouseup', e => {
   const mouseUpX = e.clientX;
   if (mouseUpX - mouseDownX > 50) handleSwipe('right');
   else if (mouseUpX - mouseDownX < -50) handleSwipe('left');
 });
 
-// -------- Buttons for Desktop --------
+// -------- Desktop buttons --------
 document.getElementById('like-btn').addEventListener('click', () => handleSwipe('right'));
 document.getElementById('dislike-btn').addEventListener('click', () => handleSwipe('left'));
 
-// -------- Keyboard Arrows --------
-document.addEventListener('keydown', (e) => {
+// -------- Keyboard arrows --------
+document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') handleSwipe('right');
   else if (e.key === 'ArrowLeft') handleSwipe('left');
 });
 
-// Initialize first card
-showNextCard();
+// -------- Initialize --------
+fetchCats(10);

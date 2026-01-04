@@ -1,56 +1,74 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(#fff, #f2f2f2);
   text-align: center;
+  margin: 0;
+  padding: 0;
+  background: #f8f8f8;
 }
 
-header {
-  padding: 16px;
+h1 {
+  margin: 20px 0;
+  font-size: 1.5rem;
 }
 
-#card-container {
+.swipe-container {
   position: relative;
   width: 90%;
-  max-width: 320px;
-  height: 420px;
-  margin: auto;
+  max-width: 400px;
+  height: 500px;
+  margin: 20px auto;
+  overflow: hidden;
 }
 
 .card {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  touch-action: none;
 }
 
-.hidden {
-  display: none;
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 15px;
 }
 
-#result {
+.buttons {
+  margin: 20px 0;
+}
+
+.buttons button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffb3b3;
+  transition: background 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #ff8080;
+}
+
+#summary {
   margin-top: 30px;
 }
 
-#likedCats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+#liked-cats img {
+  width: 100px;
+  margin: 5px;
+  border-radius: 10px;
 }
 
-#likedCats img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin: 6px;
+/* Hide buttons on mobile */
+@media (max-width: 768px) {
+  .buttons { display: none; }
 }

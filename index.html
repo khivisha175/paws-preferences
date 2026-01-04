@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws & Preferences</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Paws & Preferences: Find Your Favourite Kitty</h1>
 
-<header>
-  <h1>🐾 Paws & Preferences</h1>
-  <p>Swipe right to like, left to dislike</p>
-</header>
+  <div class="swipe-container">
+    <!-- Cards -->
+    <div class="card">
+      <img src="https://cataas.com/cat?random=1" alt="Cat 1">
+    </div>
+    <div class="card">
+      <img src="https://cataas.com/cat?random=2" alt="Cat 2">
+    </div>
+    <div class="card">
+      <img src="https://cataas.com/cat?random=3" alt="Cat 3">
+    </div>
+    <div class="card">
+      <img src="https://cataas.com/cat?random=4" alt="Cat 4">
+    </div>
+    <div class="card">
+      <img src="https://cataas.com/cat?random=5" alt="Cat 5">
+    </div>
+    <!-- Add more cards as needed -->
+  </div>
 
-<main>
-  <div id="card-container"></div>
+  <!-- Buttons for desktop users -->
+  <div class="buttons">
+    <button id="dislike-btn">Dislike 👎</button>
+    <button id="like-btn">Like 👍</button>
+  </div>
 
-  <section id="result" class="hidden">
-    <h2>You liked <span id="likeCount"></span> cats 😻</h2>
-    <div id="likedCats"></div>
-  </section>
-</main>
+  <!-- Summary -->
+  <div id="summary" style="display:none;">
+    <h2>You liked <span id="like-count"></span> cats!</h2>
+    <div id="liked-cats" class="liked-cats"></div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

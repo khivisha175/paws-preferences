@@ -14,6 +14,8 @@ background-image: url('cat-background.jpg'); /* must match file name exactly */
 h1 {
   margin: 20px 0;
   font-size: 1.5rem;
+   font-weight: bold;
+  color: black;
 }
 
 .swipe-container {
@@ -77,6 +79,7 @@ h1 {
 @media (max-width: 768px) {
   .buttons { display: none; }
 }
+
 
 
 

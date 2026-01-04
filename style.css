@@ -7,7 +7,7 @@ background-image: url('cat-background.jpg'); /* must match file name exactly */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 100vh; /* ensures body fills viewport */
+  /*  height: 100vh;ensures body fills viewport */
 }
 
 
@@ -79,6 +79,7 @@ h1 {
 @media (max-width: 768px) {
   .buttons { display: none; }
 }
+
 
 
 
